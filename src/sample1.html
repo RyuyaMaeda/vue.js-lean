@@ -7,9 +7,18 @@
 </head>
 <body>
   <div id="app">
+    <span v-if="seen" v-bind:title="msg1">
+          Hover your mouse over me for a few seconds
+          to see my dynamically bound title!
+      </span></br>
     <button name="myBtn" @click="changeMsg1('tamago')">クリックして</button>
     <h1>{{ msg1 }}</h1>
     <p>ようこそ{{ msg2 }}の世界へ。</p>
+    <ol>
+      <li v-for="animal in animals">
+        {{ animal.text}}
+      </li>
+    </ol>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
   <script src="./sample1.js"></script>

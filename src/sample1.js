@@ -1,8 +1,15 @@
 var app = new Vue({
   el: '#app',
   data: {
-    msg1: 'はじめてのVue.js',
-    msg2: 'Vue.js'
+    seen: true,
+    msg1: 'Hello Vue',
+    msg2: 'Vue',
+    animals: [
+      { text: 'elephant'},
+      {text:'monkey'},
+      { text: 'cat' },
+      { text: 'dog' }
+    ]
   },
   methods: {
     changeMsg1: function (name) {
