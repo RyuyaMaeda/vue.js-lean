@@ -2,12 +2,16 @@
 <template>
   <div>
     <h1>{{ title}}</h1>
-    <p>{{text}}</p>
+    <p>Welcome! {{ username }}</p>
   </div>
 </template>
 
 <script>
 export default {
+  //親コンポーネントで定義した属性名とデータ型をオブジェクト形式で記載する。
+  props: {
+    username: String
+  },
   // VueコンポーネントはVueインスタンスの拡張であるので、オブジェクト型で定義できない。代わりに関数定義する必要がある。
   data() {
     return {
