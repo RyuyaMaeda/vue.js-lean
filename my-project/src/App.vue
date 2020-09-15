@@ -3,8 +3,9 @@
   <div>
     <!--子コンポーネントを呼び出しているタグの中でカスタム属性を定義することができる-->
     <Header :username='name'></Header>
-    <Body></Body>
-    <Body></Body>
+    <!--子コンポーネントで定義したaddイベントは、親コンポーネント側のタグ属性で@add=[関数名]と記載することで、methodsで定義してある関数に繋げることができます。-->
+    <Body @add="add1"></Body>
+    <Body @add="add2"></Body>
     <p>total: {{ totalcount }}</p>
   </div>
 </template>
@@ -25,6 +26,16 @@ export default {
   components: {
     Header,
     Body
+  },
+  methods: {
+    add1(count){
+      this.count1 = count;
+      this.totalcount = this.count1 + this.count2;
+    },
+    add2(count){
+      this.count2 = count;
+      this.totalcount = this.count1 + this.count2;
+    }
   }
 }
 </script>
