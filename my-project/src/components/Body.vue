@@ -1,7 +1,7 @@
 <!--scopedはtempalte内は、キーエレメントがないといけないため、<div>などでラップする必要がある-->
 <template>
   <div>
-    <h1>{{ title}}</h1>
+    <h2>{{ title}}</h2>
     <p>{{text}}</p>
   </div>
 </template>
@@ -11,8 +11,8 @@ export default {
   // VueコンポーネントはVueインスタンスの拡張であるので、オブジェクト型で定義できない。代わりに関数定義する必要がある。
   data() {
     return {
-      title: "Header",
-      text: "Hello Vue.js!"
+      title: "Body",
+      text: "Have a good day!"
     }
   }
 }
@@ -20,12 +20,12 @@ export default {
 <!--scopedは「このコンポーネントにのみ、styleを適用する」という意味-->
 <style scoped>
 div{
-  border: 1px solid blue
+  border: 1px solid red
 }
 h1{
-  color: blue
+  color: red
 }
 p{
-  color:blue
+  color: red
 }
 </style>
