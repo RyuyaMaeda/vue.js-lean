@@ -6,6 +6,11 @@
     <!--子コンポーネントで定義したaddイベントは、親コンポーネント側のタグ属性で@add=[関数名]と記載することで、methodsで定義してある関数に繋げることができます。-->
     <Body @add="add1"></Body>
     <Body @add="add2"></Body>
+    <button @click="changeComponentName('Header')">Headerに変更する</button>
+    <button @click="changeComponentName('Body')">Bodyに変更する</button>
+    <keep-alive>
+    <component :is="componentName"></component>
+    </keep-alive>
     <p>total: {{ totalcount }}</p>
   </div>
 </template>
@@ -20,7 +25,8 @@ export default {
       name: "naeda",
       count1: 0,
       count2: 0,
-      totalcount: 0
+      totalcount: 0,
+      componentName: "Header"
     }
   },
   components: {
@@ -35,6 +41,9 @@ export default {
     add2(count){
       this.count2 = count;
       this.totalcount = this.count1 + this.count2;
+    },
+    changeComponentName(componentName) {
+      this.componentName = componentName;
     }
   }
 }
