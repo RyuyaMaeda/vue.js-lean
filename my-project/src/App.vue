@@ -2,7 +2,7 @@
 <template>
   <div>
     <!--子コンポーネントを呼び出しているタグの中でカスタム属性を定義することができる-->
-    <Header :username='name'></Header>
+    <Header :username='name' :inputvalue="condition" @inputvalue="changeConditionValue"></Header>
     <!--子コンポーネントで定義したaddイベントは、親コンポーネント側のタグ属性で@add=[関数名]と記載することで、methodsで定義してある関数に繋げることができます。-->
     <Body @add="add1"></Body>
     <Body @add="add2"></Body>
@@ -11,6 +11,7 @@
     <keep-alive>
     <component :is="componentName"></component>
     </keep-alive>
+    <input type="text" v-model="condition" >
     <p>total: {{ totalcount }}</p>
   </div>
 </template>
@@ -26,6 +27,7 @@ export default {
       count1: 0,
       count2: 0,
       totalcount: 0,
+      condition: "aaaa",
       componentName: "Header"
     }
   },
@@ -44,6 +46,9 @@ export default {
     },
     changeComponentName(componentName) {
       this.componentName = componentName;
+    },
+    changeConditionValue(inputValue) {
+      this.condition = inputValue;
     }
   }
 }

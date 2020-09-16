@@ -3,6 +3,8 @@
   <div>
     <h1>{{ title}}</h1>
     <p>Welcome! {{ username }}</p>
+    <p>{{inputvalue}}</p>
+    <input type="text" @input="childValue" >
   </div>
 </template>
 
@@ -10,13 +12,19 @@
 export default {
   //親コンポーネントで定義した属性名とデータ型をオブジェクト形式で記載する。
   props: {
-    username: String
+    username: String,
+    inputvalue: String
   },
   // VueコンポーネントはVueインスタンスの拡張であるので、オブジェクト型で定義できない。代わりに関数定義する必要がある。
   data() {
     return {
       title: "Header",
       text: "Hello Vue.js!"
+    }
+  },
+  methods: {
+    childValue(e) {
+      this.$emit("inputvalue", e.target.value);
     }
   }
 }
