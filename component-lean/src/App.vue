@@ -18,7 +18,8 @@
     <input type="text" v-model="condition" />
     <p>total: {{ totalcount }}</p>
     <button @click="uranau()">今日の運勢を占う</button>
-    <div><img :="imgAttributes" /></div>
+    <div :style="myStyle"><img :="imgAttributes" /></div>
+    <button @click="changeStyle">画像の配置を中央に変える</button>
   </div>
 </template>
 
@@ -48,6 +49,7 @@ export default {
         height: "200",
         alt: "おみくじ",
       },
+      myStyle: {},
     };
   },
   components: {
@@ -73,6 +75,10 @@ export default {
       this.imgAttributes.src = this.kujis[
         Math.floor(Math.random() * this.kujis.length)
       ];
+    },
+    changeStyle() {
+      this.myStyle.width = "30%";
+      this.myStyle.margin = "auto";
     },
   },
 };
