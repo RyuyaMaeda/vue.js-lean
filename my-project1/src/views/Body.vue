@@ -7,6 +7,8 @@
       <button @click="increment">+1</button>
       {{ count }}
     </p>
+    <p>{{ storedMsg }}</p>
+    <button @click="changeMessage">storeのstateの値を変更する</button>
   </div>
 </template>
 
@@ -25,6 +27,14 @@ export default {
       this.count += 1;
       // 第一引数でaddイベントを定義して、第二引数でコンポーネントの値を引数として渡す
       this.$emit("add", this.count);
+    },
+    changeMessage() {
+      this.$store.commit("changeMessage");
+    }
+  },
+  computed: {
+    storedMsg() {
+      return this.$store.state.message;
     }
   }
 };
